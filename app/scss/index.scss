@@ -1,119 +1,144 @@
 $mainColor: #FE8173;
 
-[id^="tiplodicus-"],
-[id*=" tiplodicus-"] {
-    width: 15rem;
-    display: none;
+.tiplodicus {
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
-    .td-text {
-        padding: 1rem;
+    -webkit-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+    display: none;
+
+    @media #{$small-only} {
+        width: 100%;
+        @include rem-calc(margin-top, 5);
+    }
+
+    .td-tip {
+        position: absolute;
+    }
+
+    .td-close {
+        @include rem-calc(margin, 0, 0, 10, 20);
+        float: right;
+        display: block;
+
+        .touch & {
+            display: block;
+        }
+
+        img {
+            @include rem-calc(height, 18);
+            @include rem-calc(width, 18);
+        }
+    }
+
+    .td-content {
+        @include rem-calc(width, 335);
+        @include rem-calc(padding, 10);
         margin: 0;
         background-color: $mainColor;
-        line-height: 1.5rem;
-        border-radius: 2rem;
+        @include rem-calc(font-size, 13);
+        @include rem-calc(line-height, 18);
+
+        h3 {
+            @include rem-calc(padding-bottom, 10);
+            font-weight: normal;
+            @include rem-calc(font-size, 14);
+            @include rem-calc(line-height, 16);
+        }
+
+        p {
+            @include rem-calc(padding, 10, 0 , 0, 0);
+            margin: 0;
+
+            &:nth-of-type(1) {
+                padding: 0;
+            }
+        }
+
+        @media #{$small-only} {
+            width: 97%;
+            margin-left: 1.5%;
+        }
     }
-    .td-tip {
-        border-top: 0.625rem solid $mainColor;
-        border-left: 0.625rem solid transparent;
-        border-right: 0.625rem solid transparent;
+
+    &[class*="top-"] {
+        @include rem-calc(margin-bottom, 10);
+
+        .td-tip {
+            @include css-triangle(12, $mainColor, top);
+        }
     }
+
+    &[class*="bottom-"] {
+        @include rem-calc(margin-top, 10);
+
+        .td-tip {
+            @include css-triangle(12, $mainColor, bottom);
+            bottom: 100%;
+        }
+    }
+
+    &[class*="-center"] {
+        .td-tip {
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            left: 50%;
+        }
+    }
+
+    &[class*="center-"] {
+        .td-tip {
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            top: 50%;
+        }
+    }
+
+    &[class*="-right"] {
+        .td-tip {
+            @include rem-calc(left, 12);
+        }
+    }
+
+    &[class*="-left"] {
+        .td-tip {
+            @include rem-calc(right, 12);
+        }
+    }
+
+    &.center-right {
+        @include rem-calc(padding-left, 12);
+
+        .td-tip {
+            @include css-triangle(12, $mainColor, right);
+            @include rem-calc(left, -12);
+        }
+    }
+
+    &.center-left {
+        @include rem-calc(padding-right, 12);
+        .td-tip {
+            @include css-triangle(12, $mainColor, left);
+            @include rem-calc(right, -12);
+        }
+    }
+
+    &.hide {
+        /**
+            This is so the tooltips don't take up room in the document
+            when they are hidden. Position:absolute isn't enough apparently
+            when they are not display:none. Visibility:hidden is required for
+            the fade in effect.
+        **/
+        left: -100% !important;
+    }
+
     &.show {
+        visibility: visible;
+        opacity: 1;
         display: block;
-    }
-    &.topCenter {
-        margin-bottom: 0.625rem;
-        .td-tip {
-            -webkit-transform: translateX(-50%);
-            position: absolute;
-            left: 50%;
-            top: 100%;
-        }
-    }
-    &.topRight {
-        margin-bottom: 0.625rem;
-        .td-tip {
-            position: absolute;
-            left: 10%;
-            top: 100%;
-        }
-    }
-    &.topLeft {
-        margin-bottom: 0.625rem;
-        .td-tip {
-            position: absolute;
-            right: 15%;
-            top: 100%;
-        }
-    }
-    &.bottomCenter {
-        margin-top: 0.625rem;
-        .td-tip {
-            border-bottom: 0.625rem solid $mainColor;
-            border-top: none;
-            -webkit-transform: translateX(-50%);
-            position: absolute;
-            left: 50%;
-            top: -0.625rem;
-        }
-    }
-    &.bottomRight {
-        margin-top: 0.625rem;
-        .td-text {
-            border-radius: 1rem;
-        }
-        .td-tip {
-            border-top: none;
-            border-bottom: 1rem solid $mainColor;
-            border-left-width: 0.65rem;
-            border-right-width: 0.65rem;
-            -webkit-transform: rotateZ(-39deg);
-            transform: rotateZ(-39deg);
-            position: absolute;
-            left: -0.45rem;
-            top: -0.45rem;
-        }
-    }
-    &.bottomLeft {
-        margin-top: 0.625rem;
-        .td-text {
-            border-radius: 1rem;
-        }
-        .td-tip {
-            border-top: none;
-            border-bottom: 1rem solid $mainColor;
-            border-left: 0.65rem solid transparent;
-            border-right: 0.65rem solid transparent;
-            -webkit-transform: rotateZ(39deg);
-            transform: rotateZ(39deg);
-            position: absolute;
-            right: -0.40rem;
-            top: -0.40rem;
-        }
-    }
-    &.rightCenter {
-        margin-left: 0.75rem;
-        .td-tip {
-            border-left: none;
-            border-top: 0.625rem solid transparent;
-            border-bottom: 0.625rem solid transparent;
-            border-right: 0.625rem solid $mainColor;
-            -webkit-transform: translateY(-50%);
-            position: absolute;
-            left: -0.5rem;
-            top: 50%;
-        }
-    }
-    &.leftCenter {
-        margin-right: 0.75rem;
-        .td-tip {
-            border-right: none;
-            border-top: 0.625rem solid transparent;
-            border-bottom: 0.625rem solid transparent;
-            border-left: 0.625rem solid $mainColor;
-            -webkit-transform: translateY(-50%);
-            position: absolute;
-            right: -0.5rem;
-            top: 50%;
-        }
     }
 }

@@ -1,10 +1,23 @@
+@import "functions";
+@import "settings";
+@import "media-queries";
+@import "mixins";
+@import "grid";
+@import "normalize";
+@import "index";
+
 * {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
+html {
+    font-size: 10px;
+}
+
 body {
     padding: 1.5rem;
+    @include rem-calc(font-size, 12);
 }
 
 .third {
@@ -25,6 +38,3 @@ body {
         clear: both;
     }
 }
-
-@import 'normalize';
-@import 'index';

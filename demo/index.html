@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
+    <meta http-equiv-"X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="/css/tiplodicus-demo.css">
 </head>
 <body>
     <h1>Tiplodicus</h1>
     
     
-    <div class="third"><a href="#" title="Some other kind of tooltip." class="tiptap" data-td-options='{"tooltipPosition": "topRight", "rightOffset": -50}'>Top Right</a>.</div>
+    <div class="third"><a href="#" title="Some other kind of tooltip." class="tiptap" data-td-options='{"horizontal": "right", "offset": {"x": -50}}'>Top Right</a>.</div>
     <div class="third"><a href="#" title="Some kind of tooltip." class="tiptap">Top Center</a>.</div>
-    <div class="third"><a href="#" title="Some other other kind of tooltip." class="tiptap" data-td-options='{"tooltipPosition": "topLeft", "showEvent": "click", "leftOffset": -50}'>Top Left - Click</a>.</div>
+    <div class="third"><a href="#" title="Some other other kind of tooltip." class="tiptap" data-td-options='{"horizontal": "left", "showEvent": "click", "offset": {"x": -50}}'>Top Left - Click</a>.</div>
 
-    <div class="third"><a href="#" title="Some other other kind of tooltip." class="tiptap" data-td-options='{"tooltipPosition": "bottomRight"}'>Bottom Right</a>.</div>
-    <div class="third"><a href="#" title="Some other kind of tooltip." class="tiptap" data-td-options='{"tooltipPosition": "bottomCenter"}'>Bottom Center</a>.</div>
-    <div class="third"><a href="#" title="Some other other kind of tooltip." class="tiptap" data-td-options='{"tooltipPosition": "bottomLeft", "showEvent": "click"}'>Bottom Left - Click</a>.</div>
+    <div class="third"><a href="#" title="Some other other kind of tooltip." class="tiptap" data-td-options='{"vertical": "bottom", "horizontal": "right"}'>Bottom Right</a>.</div>
+    <div class="third"><a href="#" title="Some other kind of tooltip." class="tiptap" data-td-options='{"vertical": "bottom", "horizontal": "center", "keepOpen": true}'>Bottom Center</a>.</div>
+    <div class="third"><a href="#" title="Some other other kind of tooltip." class="tiptap" data-td-options='{"vertical": "bottom", "horizontal": "left", "showEvent": "click"}'>Bottom Left - Click</a>.</div>
 
-    <div class="third"><a href="#" title="Some other kind of tooltip." class="tiptap" data-td-options='{"tooltipPosition": "rightCenter"}'>Right Center</a>.</div>
-    <div class="third"><a href="#" title="Some other other kind of tooltip." class="tiptap" data-td-options='{"tooltipPosition": "leftCenter", "showEvent": "click"}'>Left Center - Click</a>.</div>
+    <div class="third"><a href="#" title="Some other kind of tooltip." class="tiptap" data-td-options='{"vertical": "center", "horizontal": "right"}'>Right Center</a>.</div>
+    <div class="third"><a href="#" title="Some other other kind of tooltip." class="tiptap" data-td-options='{"vertical": "center", "horizontal": "left", "showEvent": "click"}'>Left Center - Click</a>.</div>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/js/tiplodicus.js"></script>
